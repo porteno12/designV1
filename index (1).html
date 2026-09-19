@@ -1,0 +1,296 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>היבטים – ניוזלטר 1 · מחשבה – מרכז המורים למדעי המחשב</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@500;700;900&amp;family=Assistant:wght@400;600;700;800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap">
+<style>
+body{margin:0;background:#FAFAFD;font-family:'Assistant',sans-serif;color:#14121E}
+a{color:inherit;text-decoration:none}a:hover{color:inherit}
+.mono{font-family:'JetBrains Mono',monospace}
+.serif{font-family:'Frank Ruhl Libre',serif}
+.p{margin:0 0 18px;font-size:19px;line-height:1.75;color:#2B2B33}
+.cols{column-count:2;column-gap:48px;column-rule:1px solid #E4E9F2}
+.drop>p:first-child::first-letter{float:right;font-family:'Frank Ruhl Libre',serif;font-weight:900;font-size:92px;line-height:.8;margin:6px 0 0 12px;color:#2F6BFF}
+.cap{font-family:'JetBrains Mono',monospace;font-size:13px;color:#5C6078}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes spinr{to{transform:rotate(-360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+@keyframes draw{from{stroke-dashoffset:900}to{stroke-dashoffset:0}}
+@keyframes flow{to{stroke-dashoffset:-28}}
+@keyframes path{0%,10%{stroke:#D5DCEA;stroke-width:3}20%,80%{stroke:#8B5CF6;stroke-width:6}90%,100%{stroke:#D5DCEA;stroke-width:3}}
+@keyframes lit{0%,10%{fill:#FFFFFF}20%,70%{fill:#C9F4FF}80%,100%{fill:#FFFFFF}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+.rise{animation:rise 1s cubic-bezier(.2,.7,.1,1) both}
+.spin{transform-box:fill-box;transform-origin:center;animation:spin 40s linear infinite}
+.spinr{transform-box:fill-box;transform-origin:center;animation:spinr 26s linear infinite}
+.bob{animation:bob 7s ease-in-out infinite}
+.draw{stroke-dasharray:900;animation:draw 3.2s cubic-bezier(.6,0,.2,1) infinite alternate}
+.flow{stroke-dasharray:8 6;animation:flow 1.2s linear infinite}
+.pth{animation:path 5s linear infinite}
+.lit{animation:lit 5s linear infinite}
+.cur{animation:blink 1s steps(1) infinite}
+.row{transition:background .25s ease,padding .25s ease}
+.row:hover{background:#EEF3FF;padding-right:14px}
+.row .arr{transition:transform .3s ease;opacity:.5}
+.row:hover .arr{transform:translateX(-8px);opacity:1}
+.btn{transition:transform .15s ease,background .2s ease,color .2s ease}
+.btn:hover{transform:translateY(-2px)}
+.btn:active{transform:scale(.96)}
+.fig{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.fig:hover{transform:rotate(-1deg) scale(1.01)}
+.gb{filter:drop-shadow(0 0 10px rgba(47,107,255,.55))}
+.gv{text-shadow:0 0 18px rgba(139,92,246,.55)}
+.row:hover .serif:first-child{text-shadow:0 0 16px rgba(139,92,246,.6)}
+.gB{filter:drop-shadow(0 0 3px rgba(47,107,255,.85)) drop-shadow(0 0 10px rgba(47,107,255,.4))}
+.gC{filter:drop-shadow(0 0 3px rgba(0,209,255,.95)) drop-shadow(0 0 12px rgba(0,209,255,.5))}
+.gV{filter:drop-shadow(0 0 3px rgba(139,92,246,.85)) drop-shadow(0 0 10px rgba(139,92,246,.4))}
+.dots{background-color:#FFFFFF;background-image:radial-gradient(rgba(47,107,255,.14) 1px,transparent 1.4px);background-size:18px 18px}
+@keyframes ripple{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+.ripple{transform-box:fill-box;transform-origin:center;animation:ripple 2.4s ease-out infinite}
+@keyframes scan{0%,18%{stroke:#C8D2E6}25%,45%{stroke:#00D1FF}55%,100%{stroke:#C8D2E6}}
+.scan{animation:scan 6s linear infinite}
+@keyframes floatl{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.floatl{animation:floatl 6s ease-in-out infinite}
+.node{cursor:pointer}
+.node:hover circle.ring{stroke-width:3}
+
+#top5 svg[width="1072"]{width:100%;height:auto}
+@media (max-width: 900px){
+#top5 > div:first-child{flex-direction:column;align-items:flex-start!important;gap:6px;padding:14px 20px!important}
+#top5 header,#top5 section,#top5 article,#top5 footer{padding-left:20px!important;padding-right:20px!important}
+#top5 [style*="grid-template-columns"]{grid-template-columns:1fr!important;row-gap:36px}
+#top5 [style*="grid-column: span"]{grid-column:1/-1!important}
+#top5 h1{font-size:104px!important;letter-spacing:-2px!important}
+#top5 h2{font-size:34px!important}
+#top5 [style*="font-size: 200px"],#top5 [style*="font-size: 180px"]{font-size:110px!important}
+#top5 [style*="align-items: flex-end; gap: 28px"]{flex-wrap:wrap}
+#top5 header > svg,#top5 footer > svg{display:none}
+#top5 footer [style*="font-size: 120px"]{font-size:72px!important}
+.cols{column-count:1}
+.p{font-size:18px}
+#top5 header [style*="justify-content: space-between"]{flex-direction:column;align-items:flex-start!important;gap:6px}
+}
+@media (max-width: 480px){#top5 h1{font-size:76px!important}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<div id="top5" dir="rtl" style="position: relative; width: 100%; max-width: 1200px; margin: 0 auto; box-sizing: border-box; display: flex; flex-direction: column; background: #FAFAFD; font-family: 'Assistant', sans-serif; color: #14121E; overflow: hidden;">
+
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 18px 64px; border-bottom: 1px solid #14121E; font-size: 15px;">
+<span><b>מחשבה – מרכז המורים למדעי המחשב</b> · הפקולטה לחינוך למדע וטכנולוגיה · הטכניון – מכון טכנולוגי לישראל</span>
+<span class="mono" style="font-size: 13px;">גיליון 01 · נובמבר 2026 · תשפ"ז</span>
+</div>
+
+<header style="position: relative; padding: 28px 64px 0; display: flex; flex-direction: column;">
+<svg class="floatl" width="440" height="300" viewBox="0 0 440 300" aria-hidden="true" style="position: absolute; left: 36px; top: 4px;">
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<g class="gB" stroke="#2F6BFF"><path d="M40 250 C 110 225, 170 230, 210 250 V 96 C 170 76, 110 72, 40 96 Z"></path><path d="M210 250 C 250 230, 310 225, 380 250 V 96 C 310 72, 250 76, 210 96"></path><path d="M380 250 V96"></path></g>
+<g class="gV" stroke="#8B5CF6"><path d="M70 126 H180"></path><path d="M70 150 H160"></path><path d="M70 174 H175"></path><path d="M70 198 H140"></path></g>
+<g class="gC" stroke="#00B8E6"><path d="M250 96 V56 H300"></path><path d="M284 92 V70 H340 V40"></path><path d="M318 90 V80 H368"></path><path d="M350 92 V110 H392"></path></g>
+</g>
+<g fill="#FFFFFF" stroke="#00B8E6" stroke-width="2" class="gC"><circle cx="300" cy="56" r="6"></circle><circle cx="340" cy="40" r="6"></circle><circle cx="368" cy="80" r="6"></circle><circle cx="392" cy="110" r="6"></circle></g>
+<circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M250 96 V56 H300"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="0.5s" repeatCount="indefinite" path="M284 92 V70 H340 V40"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="3.2s" begin="1.0s" repeatCount="indefinite" path="M318 90 V80 H368"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="3.6s" begin="1.5s" repeatCount="indefinite" path="M350 92 V110 H392"></animateMotion></circle>
+<text x="232" y="190" font-family="JetBrains Mono, monospace" font-size="30" font-weight="700" fill="none" stroke="#2F6BFF" stroke-width="1.5" class="gB">&lt;/&gt;</text>
+</svg>
+<div style="position: relative; display: flex; align-items: flex-end; gap: 24px;">
+<h1 class="serif rise" style="margin: 0; font-weight: 900; font-size: 236px; line-height: .85; letter-spacing: -6px;">היבטים<span class="gv" style="color: #8B5CF6;">.</span></h1>
+</div>
+<div style="position: relative; margin-top: 22px; border-top: 4px solid #14121E; border-bottom: 1px solid #14121E; padding: 12px 0; display: flex; justify-content: space-between; align-items: center;">
+<span class="serif" style="font-size: 22px; font-weight: 700;">ניוזלטר למורי מדעי המחשב, הנדסת תוכנה ובינה מלאכותית</span>
+<span class="mono" dir="ltr" style="font-size: 13px; color: #5C6078;">CS · SE · AI · CYBER</span>
+</div>
+</header>
+
+<section style="padding: 48px 64px 72px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; align-items: start;">
+<div style="grid-column: span 5; display: flex; flex-direction: column;">
+<span class="mono" style="font-size: 13px; letter-spacing: 1px; color: #2F6BFF; margin-bottom: 10px;">סילבוס הגיליון</span>
+<a class="row" href="#c1" style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid #14121E;"><span class="serif" style="font-size: 40px; font-weight: 900; color: #8B5CF6; width: 48px;">1</span><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;">מנהיגות בהוראת מדעי המחשב</span><span style="font-size: 15px; color: #5C6078;">דבר המערכת</span></span><span class="arr">←</span></a>
+<a class="row" href="#c2" style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid #D5DCEA;"><span class="serif" style="font-size: 40px; font-weight: 900; color: #8B5CF6; width: 48px;">2</span><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;">דבר מנהלת מרכז המורים הארצי למדעי המחשב</span><span style="font-size: 15px; color: #5C6078;">ד"ר תמי לפידות</span></span><span class="arr">←</span></a>
+<a class="row" href="#c3" style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid #D5DCEA;"><span class="serif" style="font-size: 40px; font-weight: 900; color: #8B5CF6; width: 48px;">3</span><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;">דבר מפמ"רית מדעי המחשב, בינה מלאכותית, הנדסת תוכנה וסייבר</span><span style="font-size: 15px; color: #5C6078;">מאיה אגמון</span></span><span class="arr">←</span></a>
+<a class="row" href="#c4" style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid #D5DCEA;"><span class="serif" style="font-size: 40px; font-weight: 900; color: #8B5CF6; width: 48px;">4</span><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;">מודל הוראת מדעי המחשב בישראל</span><span style="font-size: 15px; color: #5C6078;">[שם הכותב/ת]</span></span><span class="arr">←</span></a>
+<a class="row" href="#c5" style="display: flex; gap: 18px; align-items: baseline; padding: 16px 0; border-top: 1px solid #D5DCEA; border-bottom: 1px solid #14121E;"><span class="serif" style="font-size: 40px; font-weight: 900; color: #8B5CF6; width: 48px;">5</span><span style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;">מה שנשאר אחרי הבגרות</span><span style="font-size: 15px; color: #5C6078;">רוני רובן</span></span><span class="arr">←</span></a>
+</div>
+
+<div style="grid-column: span 7; display: flex; flex-direction: column; gap: 12px;">
+<div class="dots" style="position: relative; border: 1px solid #D5DCEA; padding: 20px 20px 24px; display: flex; flex-direction: column; gap: 14px;">
+<div style="display: flex; justify-content: space-between; align-items: center;"><span class="mono" style="font-size: 13px; color: #2F6BFF;">5 היבטים · גיליון 01</span><span class="mono" dir="ltr" style="font-size: 12px; color: #5C6078;">click a node</span></div>
+<svg width="100%" height="380" viewBox="0 0 600 380" role="img" aria-label="חמשת ההיבטים של הגיליון: לחצו על היבט כדי לראות את המאמר" style="display: block;"><g fill="none" stroke-width="2" stroke-linecap="round"><line class="flow" x1="300" y1="190" x2="300" y2="50" data-sp="1"></line><line class="flow" x1="300" y1="190" x2="433" y2="147" data-sp="2"></line><line class="flow" x1="300" y1="190" x2="382" y2="303" data-sp="3"></line><line class="flow" x1="300" y1="190" x2="218" y2="303" data-sp="4"></line><line class="flow" x1="300" y1="190" x2="167" y2="147" data-sp="5"></line></g><circle class="ripple" cx="300" cy="190" r="44" fill="none" stroke="#00B8E6" stroke-width="1.5"></circle><polygon class="gB" points="340,213 300,236 260,213 260,167 300,144 340,167" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2"></polygon><text x="300" y="197" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="20" font-weight="900" fill="#14121E">היבטים</text><g class="node" data-pick="1" tabindex="0" role="button" aria-label="היבט 1" transform="translate(300 50)"><circle class="ring" r="34" fill="#FFFFFF" stroke-width="2" data-n="1"></circle><g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-i="1"><path d="M-9 14 V-14 M-9 -14 H11 L5 -6 L11 2 H-9"></path></g><text x="0" y="54" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="18" font-weight="900" fill="#8B5CF6">1</text></g><g class="node" data-pick="2" tabindex="0" role="button" aria-label="היבט 2" transform="translate(433 147)"><circle class="ring" r="34" fill="#FFFFFF" stroke-width="2" data-n="2"></circle><g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-i="2"><circle cx="0" cy="0" r="4"></circle><path d="M-10 -8 A13 13 0 0 0 -10 8 M10 -8 A13 13 0 0 1 10 8 M-16 -13 A21 21 0 0 0 -16 13 M16 -13 A21 21 0 0 1 16 13"></path></g><text x="0" y="54" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="18" font-weight="900" fill="#8B5CF6">2</text></g><g class="node" data-pick="3" tabindex="0" role="button" aria-label="היבט 3" transform="translate(382 303)"><circle class="ring" r="34" fill="#FFFFFF" stroke-width="2" data-n="3"></circle><g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-i="3"><rect x="-13" y="-13" width="11" height="11"></rect><rect x="2" y="-13" width="11" height="11"></rect><rect x="-13" y="2" width="11" height="11"></rect><rect x="2" y="2" width="11" height="11"></rect></g><text x="0" y="54" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="18" font-weight="900" fill="#8B5CF6">3</text></g><g class="node" data-pick="4" tabindex="0" role="button" aria-label="היבט 4" transform="translate(218 303)"><circle class="ring" r="34" fill="#FFFFFF" stroke-width="2" data-n="4"></circle><g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-i="4"><path d="M0 0 a3 3 0 0 1 6 0 a6 6 0 0 1 -12 0 a9 9 0 0 1 18 0 a12 12 0 0 1 -24 0"></path></g><text x="0" y="54" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="18" font-weight="900" fill="#8B5CF6">4</text></g><g class="node" data-pick="5" tabindex="0" role="button" aria-label="היבט 5" transform="translate(167 147)"><circle class="ring" r="34" fill="#FFFFFF" stroke-width="2" data-n="5"></circle><g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-i="5"><path d="M0 -12 L17 -4 L0 4 L-17 -4 Z M-10 0 V8 C-10 13 10 13 10 8 V0 M17 -4 V8"></path></g><text x="0" y="54" text-anchor="middle" font-family="Frank Ruhl Libre, serif" font-size="18" font-weight="900" fill="#8B5CF6">5</text></g><circle r="5" fill="#00D1FF" class="gC"><animateMotion dur="1.6s" repeatCount="indefinite" id="selPath" path="M300 190 L300 50"></animateMotion></circle></svg>
+<div style="display: flex; align-items: center; gap: 16px; border-top: 1px solid #D5DCEA; padding-top: 16px;">
+<span class="serif gv" style="font-size: 44px; font-weight: 900; color: #8B5CF6; line-height: 1;"><span id="selNum">1</span></span>
+<div style="flex-grow: 1; display: flex; flex-direction: column; gap: 2px;"><span class="serif" style="font-size: 22px; font-weight: 700;"><span id="selTitle">מנהיגות בהוראת מדעי המחשב</span></span><span style="font-size: 15px; color: #5C6078;"><span id="selAuthor">דבר המערכת</span></span></div>
+<a class="btn" id="selHref" href="#c1" style="display: flex; align-items: center; min-height: 44px; padding: 0 18px; border: 2px solid #2F6BFF; color: #2F6BFF; font-weight: 700; font-size: 16px;">לקריאה ←</a>
+</div>
+</div>
+<span class="cap">איור 0: חמישה היבטים של הוראת מדעי המחשב – גיליון אחד.</span>
+</div>
+</section>
+
+<article id="c1" style="position: relative; padding: 72px 64px; border-top: 4px solid #14121E; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 32px; row-gap: 28px;">
+<div style="grid-column: span 12; display: flex; align-items: flex-end; gap: 28px;">
+<span class="serif" style="font-size: 180px; font-weight: 900; line-height: .75; color: transparent; -webkit-text-stroke: 2px #2F6BFF;">1</span>
+<div style="display: flex; flex-direction: column; gap: 8px;">
+<span class="mono" style="font-size: 13px; color: #2F6BFF;">דבר המערכת</span>
+<h2 class="serif" style="margin: 0; font-size: 64px; font-weight: 900; line-height: 1;">מנהיגות בהוראת מדעי המחשב</h2>
+</div>
+</div>
+<div class="drop" style="grid-column: span 7;">
+<p class="p">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.</p>
+<p class="p">הועניב היושבב שערש שמחויט – שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.</p>
+<p class="p">תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט – לפתיעם ברשג – ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן – פוסיליס קוויס, אקווזמן קוואזי במר מודוף.</p>
+</div>
+<figure class="fig" style="grid-column: span 5; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+<div class="dots" style="border: 1px solid #D5DCEA;">
+<svg width="100%" height="380" viewBox="0 0 440 380" role="img" aria-label="עץ שידור: המוביל/ה מעביר/ה ידע למורים, והמורים לתלמידים"><g fill="none" stroke-width="2" stroke-linecap="round"><g class="gB" stroke="#2F6BFF"><path d="M220 76 L90 146"></path><path d="M220 76 L220 146"></path><path d="M220 76 L350 146"></path></g><g class="gV" stroke="#8B5CF6"><path d="M90 192 L50 276"></path><path d="M90 192 L130 276"></path><path d="M220 192 L180 276"></path><path d="M220 192 L260 276"></path><path d="M350 192 L310 276"></path><path d="M350 192 L390 276"></path></g></g><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="0.0s" repeatCount="indefinite" path="M220 76 L90 146 L90 192 L50 276"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="0.45s" repeatCount="indefinite" path="M220 76 L90 146 L90 192 L130 276"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="0.9s" repeatCount="indefinite" path="M220 76 L220 146 L220 192 L180 276"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="1.35s" repeatCount="indefinite" path="M220 76 L220 146 L220 192 L260 276"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="1.8s" repeatCount="indefinite" path="M220 76 L350 146 L350 192 L310 276"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.8s" begin="2.25s" repeatCount="indefinite" path="M220 76 L350 146 L350 192 L390 276"></animateMotion></circle><circle class="ripple" cx="220" cy="48" r="28" fill="none" stroke="#00B8E6" stroke-width="1.5"></circle><circle class="gB" cx="220" cy="48" r="28" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2.5"></circle><path class="gC" d="M212 62 V34 M212 34 H232 L226 42 L232 50 H212" fill="none" stroke="#00B8E6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><circle class="gB" cx="90" cy="170" r="22" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2"></circle><path d="M82 178 V168 a8 8 0 0 1 16 0 V178 M90 164 v0" fill="none" stroke="#2F6BFF" stroke-width="2"></path><circle class="gB" cx="220" cy="170" r="22" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2"></circle><path d="M212 178 V168 a8 8 0 0 1 16 0 V178 M220 164 v0" fill="none" stroke="#2F6BFF" stroke-width="2"></path><circle class="gB" cx="350" cy="170" r="22" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2"></circle><path d="M342 178 V168 a8 8 0 0 1 16 0 V178 M350 164 v0" fill="none" stroke="#2F6BFF" stroke-width="2"></path><circle class="gV" cx="50" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><circle class="gV" cx="130" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><circle class="gV" cx="180" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><circle class="gV" cx="260" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><circle class="gV" cx="310" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><circle class="gV" cx="390" cy="290" r="13" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"></circle><g font-family="Assistant, sans-serif" font-size="15" font-weight="700" fill="#14121E" text-anchor="middle"><text x="220" y="112">מוביל/ה</text><text x="220" y="222">מורים</text><text x="220" y="336">תלמידים</text></g><text x="24" y="368" font-family="JetBrains Mono, monospace" font-size="13" fill="#5C6078">broadcast(root)</text></svg>
+</div>
+<figcaption class="cap">איור 1: מנהיגות כעץ שידור – ידע ורעיונות עוברים מהמוביל/ה, דרך המורים, אל התלמידים.</figcaption>
+</figure>
+</article>
+
+<section style="position: relative; overflow: hidden; background: #EEF3FF; padding: 80px 64px; border-top: 4px solid #14121E; border-bottom: 4px solid #14121E; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px;">
+
+<article id="c2" style="position: relative; background: #FFFFFF; border: 1px solid #14121E; display: flex; flex-direction: column;">
+<div style="height: 12px; background: #2F6BFF;"></div>
+<div style="padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 14px;">
+<span class="serif" style="font-size: 72px; font-weight: 900; line-height: .8; color: #2F6BFF;">2</span>
+<h2 class="serif" style="margin: 0; font-size: 34px; font-weight: 900; line-height: 1.15;">דבר מנהלת מרכז המורים הארצי למדעי המחשב</h2>
+<span style="font-size: 18px; font-weight: 700;">ד"ר תמי לפידות</span>
+<figure class="fig" style="margin: 8px 0; display: flex; flex-direction: column; gap: 8px;">
+<svg width="100%" height="230" viewBox="0 0 440 230" role="img" aria-label="מרכז ארצי אחד המחובר למורים באזורים שונים"><g class="gB" fill="none" stroke="#2F6BFF" stroke-width="2" stroke-linecap="round"><path d="M220 115 L330 32"></path><path d="M220 115 L90 40"></path><path d="M220 115 L64 160"></path><path d="M220 115 L370 162"></path><path d="M220 115 L220 206"></path></g><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="1.8s" begin="0.0s" repeatCount="indefinite" path="M220 115 L330 32"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="1.8s" begin="0.35s" repeatCount="indefinite" path="M90 40 L220 115"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="1.8s" begin="0.7s" repeatCount="indefinite" path="M220 115 L64 160"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="1.8s" begin="1.0499999999999998s" repeatCount="indefinite" path="M370 162 L220 115"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="1.8s" begin="1.4s" repeatCount="indefinite" path="M220 115 L220 206"></animateMotion></circle><g class="gV" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="2"><rect x="290" y="16" width="80" height="32" rx="16"></rect><rect x="50" y="24" width="80" height="32" rx="16"></rect><rect x="24" y="144" width="80" height="32" rx="16"></rect><rect x="330" y="146" width="80" height="32" rx="16"></rect><rect x="180" y="190" width="80" height="32" rx="16"></rect></g><circle class="ripple" cx="220" cy="115" r="30" fill="none" stroke="#00B8E6" stroke-width="1.5"></circle><circle class="ripple" cx="220" cy="115" r="30" fill="none" stroke="#00B8E6" stroke-width="1.5" style="animation-delay: 1.2s;"></circle><circle class="gB" cx="220" cy="115" r="30" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2.5"></circle><g font-family="Assistant, sans-serif" font-size="14" font-weight="700" fill="#14121E" text-anchor="middle"><text x="330" y="37">צפון</text><text x="90" y="45">חיפה</text><text x="64" y="165">מרכז</text><text x="370" y="167">ירושלים</text><text x="220" y="211">דרום</text><text x="220" y="112" font-size="12">מרכז</text><text x="220" y="127" font-size="12">המורים</text></g></svg>
+<figcaption class="cap">איור 2: מרכז ארצי אחד ורשת מורים בכל הארץ – ידע זורם בשני הכיוונים.</figcaption>
+</figure>
+<p class="p">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק.</p>
+<p class="p" style="margin: 0;">גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה – לתכי מורגם בורק? לתיג ישבעס.</p>
+</div>
+</article>
+
+<article id="c3" style="position: relative; background: #FFFFFF; border: 1px solid #14121E; display: flex; flex-direction: column;">
+<div style="height: 12px; background: #8B5CF6;"></div>
+<div style="padding: 36px 36px 40px; display: flex; flex-direction: column; gap: 14px;">
+<span class="serif" style="font-size: 72px; font-weight: 900; line-height: .8; color: #8B5CF6;">3</span>
+<h2 class="serif" style="margin: 0; font-size: 34px; font-weight: 900; line-height: 1.15;">דבר מפמ"רית מדעי המחשב, בינה מלאכותית, הנדסת תוכנה וסייבר</h2>
+<span style="font-size: 18px; font-weight: 700;">מאיה אגמון</span>
+<figure class="fig" style="margin: 8px 0; display: flex; flex-direction: column; gap: 8px;">
+<svg width="100%" height="230" viewBox="0 0 440 230" role="img" aria-label="עץ פיקוח: המפמ״ר ומתחתיו מדעי המחשב, בינה מלאכותית, הנדסת תוכנה וסייבר"><path class="gB" d="M220 58 V92 M58 92 H382 M58 92 V122 M166 92 V122 M274 92 V122 M382 92 V122" fill="none" stroke="#2F6BFF" stroke-width="2"></path><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.4s" begin="0.0s" repeatCount="indefinite" path="M220 58 V92 H58 V122"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.4s" begin="0.6s" repeatCount="indefinite" path="M220 58 V92 H166 V122"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.4s" begin="1.2s" repeatCount="indefinite" path="M220 58 V92 H274 V122"></animateMotion></circle><circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="2.4s" begin="1.7999999999999998s" repeatCount="indefinite" path="M220 58 V92 H382 V122"></animateMotion></circle><rect class="gB" x="160" y="14" width="120" height="44" rx="6" fill="#FFFFFF" stroke="#2F6BFF" stroke-width="2.5"></rect><text x="220" y="42" text-anchor="middle" font-family="Assistant, sans-serif" font-size="17" font-weight="800" fill="#14121E">מפמ"ר</text><rect class="scan" x="14" y="122" width="88" height="96" rx="6" fill="#FFFFFF" stroke="#C8D2E6" stroke-width="2" style="animation-delay: 0.0s;"></rect><rect class="scan" x="122" y="122" width="88" height="96" rx="6" fill="#FFFFFF" stroke="#C8D2E6" stroke-width="2" style="animation-delay: 1.5s;"></rect><rect class="scan" x="230" y="122" width="88" height="96" rx="6" fill="#FFFFFF" stroke="#C8D2E6" stroke-width="2" style="animation-delay: 3.0s;"></rect><rect class="scan" x="338" y="122" width="88" height="96" rx="6" fill="#FFFFFF" stroke="#C8D2E6" stroke-width="2" style="animation-delay: 4.5s;"></rect><g class="gV" fill="none" stroke="#8B5CF6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M48 150 L40 158 L48 166 M68 150 L76 158 L68 166 M62 146 L54 170"></path><circle cx="150" cy="148" r="4"></circle><circle cx="150" cy="168" r="4"></circle><circle cx="182" cy="158" r="5"></circle><path d="M154 150 L177 157 M154 166 L177 159"></path><rect x="254" y="140" width="40" height="34"></rect><path d="M254 152 H294 M254 163 H294"></path><path d="M372 152 v-8 a10 10 0 0 1 20 0 v8"></path><rect x="366" y="152" width="32" height="22" rx="3"></rect></g><g font-family="Assistant, sans-serif" font-size="13" font-weight="700" fill="#14121E" text-anchor="middle"><text x="58" y="204">מדעי המחשב</text><text x="166" y="204">בינה מלאכותית</text><text x="274" y="204">הנדסת תוכנה</text><text x="382" y="204">סייבר</text></g></svg>
+<figcaption class="cap">איור 3: ארבעה תחומי דעת תחת פיקוח אחד.</figcaption>
+</figure>
+<p class="p">הועניב היושבב שערש שמחויט – שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.</p>
+<p class="p" style="margin: 0;">תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט – לפתיעם ברשג – ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת.</p>
+</div>
+</article>
+</section>
+
+<article id="c4" style="padding: 88px 64px 64px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; align-items: flex-end; gap: 28px;">
+<span class="serif" style="font-size: 200px; font-weight: 900; line-height: .75; color: transparent; -webkit-text-stroke: 2px #8B5CF6;">4</span>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span class="mono" style="font-size: 13px; color: #8B5CF6;">מאמר</span>
+<h2 class="serif" style="margin: 0; font-size: 68px; font-weight: 900; line-height: 1;">מודל הוראת מדעי המחשב בישראל</h2>
+<span style="font-size: 19px; font-weight: 700;">[שם הכותב/ת]</span>
+</div>
+</div>
+<figure class="fig" style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+<div class="dots" style="position: relative; border: 1px solid #D5DCEA; overflow: hidden;">
+<svg width="1072" height="330" viewBox="0 0 1072 330" role="img" aria-label="מודל ספירלי: הבנה, תכנון, מימוש והערכה חוזרים בכל שנה ברמה עמוקה יותר" style="position: relative; display: block;">
+<g stroke="#C8D2E6" stroke-width="1.5" stroke-dasharray="4 6"><line x1="300" y1="30" x2="300" y2="300"></line><line x1="150" y1="165" x2="450" y2="165"></line></g>
+<path class="gB" d="M300 165 a20 20 0 0 1 40 0 a40 40 0 0 1 -80 0 a60 60 0 0 1 120 0 a80 80 0 0 1 -160 0 a100 100 0 0 1 200 0 a120 120 0 0 1 -240 0" fill="none" stroke="#2F6BFF" stroke-width="2.5" stroke-linecap="round"></path>
+<path class="gC flow" d="M300 165 a20 20 0 0 1 40 0 a40 40 0 0 1 -80 0 a60 60 0 0 1 120 0 a80 80 0 0 1 -160 0 a100 100 0 0 1 200 0 a120 120 0 0 1 -240 0" fill="none" stroke="#00D1FF" stroke-width="2" opacity=".7"></path>
+<circle r="6" fill="#00D1FF" class="gC"><animateMotion dur="7s" begin="0s" repeatCount="indefinite" path="M300 165 a20 20 0 0 1 40 0 a40 40 0 0 1 -80 0 a60 60 0 0 1 120 0 a80 80 0 0 1 -160 0 a100 100 0 0 1 200 0 a120 120 0 0 1 -240 0"></animateMotion></circle>
+<g font-family="Assistant, sans-serif" font-size="18" font-weight="800" fill="#14121E"><text x="330" y="52">הבנה</text><text x="222" y="52" text-anchor="end">תכנון</text><text x="222" y="292" text-anchor="end">מימוש</text><text x="330" y="292">הערכה</text></g>
+<g class="gV" fill="#FFFFFF" stroke="#8B5CF6" stroke-width="1.5"><rect x="322" y="171" width="36" height="22" rx="11"></rect><rect x="360" y="171" width="42" height="22" rx="11"></rect><rect x="404" y="171" width="42" height="22" rx="11"></rect></g>
+<g font-family="Assistant, sans-serif" font-size="13" font-weight="800" fill="#8B5CF6" text-anchor="middle"><text x="340" y="187">י</text><text x="381" y="187">י״א</text><text x="425" y="187">י״ב</text></g>
+<g font-family="Assistant, sans-serif" fill="#14121E"><text x="1010" y="110" text-anchor="end" font-size="26" font-weight="800">כל סבב – עמוק ורחב יותר</text><text x="1010" y="146" text-anchor="end" font-size="17" fill="#5C6078">אותם שלבים חוזרים בכל שכבת גיל,</text><text x="1010" y="170" text-anchor="end" font-size="17" fill="#5C6078">ברמת מורכבות גבוהה יותר.</text></g>
+<text x="1010" y="230" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="14" fill="#2F6BFF">spiral model · iterative &amp; incremental</text>
+</svg>
+</div>
+<figcaption class="cap">איור 4: מודל ספירלי – הבנה, תכנון, מימוש והערכה, בכל שנה ברמה גבוהה יותר.</figcaption>
+</figure>
+<div class="cols drop">
+<p class="p">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום, לפריקך תצטריק לרטי.</p>
+<p class="p">הועניב היושבב שערש שמחויט – שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים.</p>
+<p class="serif" style="margin: 8px 0 26px; font-size: 30px; font-weight: 700; line-height: 1.35; color: #2F6BFF; break-inside: avoid;">"קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים – קלאצי סחטיר בלובק."</p>
+<p class="p">תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט – לפתיעם ברשג – ולתיעם גדדיש. קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן – פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק – וענוף.</p>
+<p class="p">גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה – לתכי מורגם בורק? לתיג ישבעס. ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק.</p>
+<p class="p">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. קונדימנטום קורוס בליקרה, נונסטי קלובר בריקנה סטום.</p>
+</div>
+</article>
+
+<article id="c5" style="padding: 88px 64px 88px; border-top: 4px solid #14121E; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; align-items: flex-end; gap: 28px;">
+<span class="serif" style="font-size: 200px; font-weight: 900; line-height: .75; color: transparent; -webkit-text-stroke: 2px #2F6BFF;">5</span>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<span class="mono" style="font-size: 13px; color: #2F6BFF;">מאמר</span>
+<h2 class="serif" style="margin: 0; font-size: 68px; font-weight: 900; line-height: 1;">מה שנשאר אחרי הבגרות</h2>
+<span style="font-size: 19px; font-weight: 700;">רוני רובן</span>
+</div>
+</div>
+<figure class="fig" style="margin: 0; display: flex; flex-direction: column; gap: 10px;">
+<div class="dots" style="position: relative; border: 1px solid #D5DCEA; overflow: hidden;">
+<svg width="1072" height="340" viewBox="0 0 1072 340" role="img" aria-label="אחרי הבגרות: ידע שנשען על שינון דועך, הבנה ועקרונות נשארים" style="display: block;">
+<g stroke="#E4E9F2" stroke-width="1"><line x1="90" y1="70" x2="1020" y2="70"></line><line x1="90" y1="130" x2="1020" y2="130"></line><line x1="90" y1="190" x2="1020" y2="190"></line><line x1="90" y1="250" x2="1020" y2="250"></line></g>
+<g stroke="#14121E" stroke-width="1.5"><line x1="90" y1="30" x2="90" y2="290"></line><line x1="90" y1="290" x2="1030" y2="290"></line></g>
+<path class="gB" d="M90 270 C 250 250, 380 110, 480 70" fill="none" stroke="#2F6BFF" stroke-width="2.5"></path>
+<path class="gB" d="M480 70 C 560 72, 800 84, 1020 90" fill="none" stroke="#2F6BFF" stroke-width="3"></path>
+<path class="gV" d="M480 70 C 540 200, 700 262, 1020 272" fill="none" stroke="#8B5CF6" stroke-width="2.5" stroke-dasharray="10 8"></path>
+<circle r="6" fill="#00D1FF" class="gC"><animateMotion dur="5s" begin="0s" repeatCount="indefinite" path="M480 70 C 560 72, 800 84, 1020 90"></animateMotion></circle><circle r="6" fill="#8B5CF6" class="gC"><animateMotion dur="5s" begin="0s" repeatCount="indefinite" path="M480 70 C 540 200, 700 262, 1020 272"></animateMotion></circle>
+<line x1="480" y1="30" x2="480" y2="290" stroke="#00B8E6" stroke-width="1.5" stroke-dasharray="6 6" class="gC"></line>
+<rect class="gC" x="430" y="8" width="100" height="30" rx="15" fill="#FFFFFF" stroke="#00B8E6" stroke-width="2"></rect>
+<text x="480" y="29" text-anchor="middle" font-family="Assistant, sans-serif" font-size="17" font-weight="800" fill="#14121E">בגרות</text>
+<g font-family="Assistant, sans-serif" font-size="18" font-weight="800"><text x="1010" y="118" text-anchor="end" fill="#2F6BFF">הבנה, עקרונות, חשיבה אלגוריתמית</text><text x="1010" y="258" text-anchor="end" fill="#8B5CF6">שינון לקראת המבחן</text></g>
+<g font-family="Assistant, sans-serif" font-size="15" fill="#5C6078"><text x="80" y="60" text-anchor="end">ידע</text><text x="1030" y="316" text-anchor="end">זמן</text><text x="280" y="316" text-anchor="middle">תיכון</text><text x="750" y="316" text-anchor="middle">אחרי הבגרות</text></g>
+</svg>
+</div>
+<figcaption class="cap">איור 5: מה נשאר אחרי הבגרות – שינון דועך, הבנה נשארת.</figcaption>
+</figure>
+<div class="cols drop">
+<p class="p">הועניב היושבב שערש שמחויט – שלושע ותלברו חשלו שעותלשך וחאית נובש ערששף. זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. קולהע צופעט למרקוח איבן איף, ברומץ כלרשט מיחוצים. קלאצי סחטיר בלובק.</p>
+<p class="p">לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית. סת אלמנקום ניסי נון ניבאה. דס איאקוליס וולופטה דיאם. וסטיבולום אט דולור, קראס אגת לקטוס וואל אאוגו וסטיבולום סוליסי טידום בעליק.</p>
+<p class="serif gv" style="margin: 8px 0 26px; font-size: 30px; font-weight: 700; line-height: 1.35; color: #8B5CF6; break-inside: avoid;">"תצטנפל בלינדו למרקל אס לכימפו, דול, צוט ומעיוט – לפתיעם ברשג."</p>
+<p class="p">גולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט ליבם סולגק. בראיט ולחת צורק מונחף, בגורמי מגמש. תרבנך וסתעד לכנו סתשם השמה – לתכי מורגם בורק? לתיג ישבעס.</p>
+<p class="p">קוויז דומור ליאמום בלינך רוגצה. לפמעט מוסן מנת. נולום ארווס סאפיאן – פוסיליס קוויס, אקווזמן קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק – וענוף.</p>
+<p class="p">זותה מנק הבקיץ אפאח דלאמת יבש, כאנה ניצאחו נמרגי שהכים תוק, הדש שנרא התידם הכייר וק. לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית.</p>
+</div>
+</article>
+
+<footer style="position: relative; flex-grow: 1; overflow: hidden; border-top: 4px solid #14121E; padding: 64px 64px; display: flex; flex-direction: column; gap: 14px; background: #FAFAFD;">
+<svg class="floatl" width="420" height="300" viewBox="0 0 420 300" aria-hidden="true" style="position: absolute; left: 40px; top: 40px;">
+<g fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<g class="gB" stroke="#2F6BFF"><rect x="60" y="30" width="300" height="190" rx="12"></rect><path d="M170 220 L160 262 H260 L250 220 M130 262 H290"></path></g>
+<g class="gC" stroke="#00B8E6"><path d="M150 100 L120 125 L150 150 M270 100 L300 125 L270 150 M225 90 L195 160"></path></g>
+<g class="gV" stroke="#8B5CF6"><path d="M90 60 H160 M90 190 H140"></path></g>
+</g>
+<circle r="3.5" fill="#00D1FF" class="gC"><animateMotion dur="6s" begin="0s" repeatCount="indefinite" path="M60 30 H360 V220 H60 Z"></animateMotion></circle>
+</svg>
+<span class="serif" style="position: relative; font-size: 120px; font-weight: 900; line-height: .85; letter-spacing: -3px;">היבטים<span style="color: #8B5CF6;">.</span></span>
+<span style="position: relative; font-size: 18px;">גיליון 01 · נובמבר 2026 · שנה"ל תשפ"ז</span>
+<span style="position: relative; font-size: 18px; color: #5C6078;">מחשבה – מרכז המורים למדעי המחשב · הפקולטה לחינוך למדע וטכנולוגיה · הטכניון – מכון טכנולוגי לישראל</span>
+<a class="btn" href="#top5" style="position: relative; align-self: flex-start; margin-top: 16px; display: flex; align-items: center; min-height: 48px; padding: 0 24px; background: #14121E; color: #FFFFFF; font-size: 17px; font-weight: 700;">חזרה לראש העמוד ↑</a>
+</footer>
+</div>
+<script>
+(function(){
+var A=[["מנהיגות בהוראת מדעי המחשב","דבר המערכת"],["דבר מנהלת מרכז המורים הארצי למדעי המחשב","ד\"ר תמי לפידות"],["דבר מפמ\"רית מדעי המחשב, בינה מלאכותית, הנדסת תוכנה וסייבר","מאיה אגמון"],["מודל הוראת מדעי המחשב בישראל","[שם הכותב/ת]"],["מה שנשאר אחרי הבגרות","רוני רובן"]];
+var P=[[300,50],[433,147],[382,303],[218,303],[167,147]];
+var sel=0,manual=false;
+function q(a){return document.querySelector(a)}
+function render(){
+for(var i=1;i<=5;i++){var on=i-1===sel;
+q('[data-n="'+i+'"]').setAttribute('style',on?'stroke:#2F6BFF;filter:drop-shadow(0 0 4px rgba(47,107,255,.9)) drop-shadow(0 0 14px rgba(0,209,255,.6))':'stroke:#C8D2E6');
+q('[data-i="'+i+'"]').setAttribute('style',on?'stroke:#00B8E6;filter:drop-shadow(0 0 3px rgba(0,209,255,.9))':'stroke:#8B5CF6');
+q('[data-sp="'+i+'"]').setAttribute('style',on?'stroke:#00D1FF;stroke-width:2.5;filter:drop-shadow(0 0 4px rgba(0,209,255,.9))':'stroke:#D5DCEA');}
+q('#selNum').textContent=sel+1;q('#selTitle').textContent=A[sel][0];q('#selAuthor').textContent=A[sel][1];
+q('#selHref').setAttribute('href','#c'+(sel+1));
+q('#selPath').setAttribute('path','M300 190 L'+P[sel][0]+' '+P[sel][1]);}
+document.querySelectorAll('[data-pick]').forEach(function(g){
+function go(){sel=+g.getAttribute('data-pick')-1;manual=true;render();}
+g.addEventListener('click',go);g.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go();}});});
+setInterval(function(){if(!manual){sel=(sel+1)%5;render();}},3200);
+render();
+})();
+</script>
+</body>
+</html>
